@@ -1,20 +1,30 @@
 ###
+//GET ALL POSTS
+GET http://localhost:3000/posts
 
-GET http://localhost:3000/
+###
+//GET POSTS BY OWNER
+GET http://localhost:3000/posts?owner=Mevorah
 
 ###
 
 GET http://localhost:3000/posts
 
-
 ###
-
+//CREATE POST
 POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "owner": "Mevorah3",
+    "title": "My First Post",
+    "content": "Hello World"
+}
 
 
 ###
-
-DELETE http://localhost:3000/posts
+//DELETE POST
+DELETE http://localhost:3000/posts/6756e289e4d20196bad547a4
 
 
 ###
