@@ -24,7 +24,7 @@ Content-Type: application/json
 
 ###
 //DELETE POST
-DELETE http://localhost:3000/posts/6756e289e4d20196bad547a4
+DELETE http://localhost:3000/posts/6756e6990361965d32134fda
 
 
 ###
