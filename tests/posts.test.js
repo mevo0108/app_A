@@ -1,30 +1,16 @@
 
 const request = require('supertest');
-const app = require('../server');
+const appInit = require('../server');
 const mongoose = require('mongoose');
 const postsModel = require('../models/posts_model');
 
-const testPosts = [
-    {
-        title: 'Test Post 1',
-        content: 'Test Content 1',
-        owner: 'Mevorah'
-    },
-    {
-        title: 'Test Post 2',
-        content: 'Test Content 2',
-        owner: 'Mevorah2'
-    },
-    {
-        title: 'Test Post 3',
-        content: 'Test Content 3',
-        owner: 'Mevorah3'
-    }
-    
-]
+const testPosts = require('./test_posts');
+
+let app;
 
 beforeAll( async () => {
     console.log('Before all tests');
+    app = await appInit();
     await postsModel.deleteMany();
 });
 
@@ -69,5 +55,22 @@ describe("Posts Test" , () => {
         expect(response.statusCode).toBe(200);
         expect(response.body.length).toBe(1);
         
+    });
+
+    test("Test Delete post by id", async () => {
+        const response = await request(app).delete(`/posts/` + testPosts[0]._id);
+        expect(response.statusCode).toBe(200);
+        
+        const responseGet = await request(app).get(`/posts` + testPosts[0]._id);
+        expect(responseGet.statusCode).toBe(404);
+    });
+
+    test("Test create new post fail", async () => {
+
+        const response = await request(app).post('/posts').send({
+            title: 'Test Post 1',
+            content: 'Test Content 1',
+        });
+        expect(response.statusCode).toBe(400);
     });
 });

@@ -21,8 +21,12 @@ const getPostById = async (req, res)=>{
     const postId = req.params.id;
     try {
         const post = await postModel.findById(postId);
-        res.status(200).send(post);
-    }catch(error){
+        if(post == null) {
+            return res.status(404).send("Post not found");
+        } else {
+            return res.status(200).send(post);
+        }
+    } catch (error) {
         res.status(400).send(error.message);
     }
 };
@@ -33,7 +37,7 @@ const createPost = async (req, res) => {
         newPost = await postModel.create(post);
         res.status(201).send(newPost);
     } catch(error){
-        res.status(400).send(error.message);
+        res.status(400).send(error);
     }
 };
 
@@ -43,7 +47,7 @@ const deletePost = async (req, res)=>{
         const post = await postModel.findByIdAndDelete(postId);
         res.status(200).send(post);
     }catch(error){
-        res.status(400).send(error.message);
+        res.status(400).send(error);
     }
 };
 
