@@ -22,6 +22,8 @@ afterAll( async ()=>{
     await mongoose.connection.close();
 });
 
+describe("Test Posts", () => {
+
 test("Test create new post", async () => {
         for(const post of testPosts){
             const response = await request(app).post('/posts').send(post);
@@ -70,3 +72,4 @@ test("Test create new post", async () => {
         expect(response.statusCode).toBe(400);
     });
 
+});

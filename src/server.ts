@@ -5,7 +5,8 @@ import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import postsRoute from "./routes/posts_route";  
+import postsRoute from "./routes/posts_route";
+import commentsRoute from "./routes/comments_route";
 
 const initApp = ():Promise<Express> => {
     return new Promise<Express>((resolve, reject) => {
@@ -20,6 +21,7 @@ const initApp = ():Promise<Express> => {
             app.use(bodyParser.json());
             app.use(bodyParser.urlencoded({ extended: true }));
             app.use("/posts", postsRoute);
+            app.use("/comments", commentsRoute);
             resolve(app);
     })
     .catch((err) => {
