@@ -1,0 +1,21 @@
+
+[
+    {
+        "_id": "5f5f3b3b7f3b9b5875f3b9b0",
+        "owner": "Mevorah",
+        "comment": "Test Comment 1",
+        "postId": "5f5f3b3b7f3b9b0017f3b9b0"
+    },
+    {
+        "_id": "5f5f3b3b7f3b9b7854f3b9b0",
+        "owner": "Mevorah2",
+        "comment": "Test Comment 2",
+        "postId": "5f5f3r3b7f3b9b0017f3b9b0"
+    },
+    {
+        "_id": "5f5f3b3b7f3b9b9865r3b9b0",
+        "owner": "Mevorah3",
+        "comment": "Test Comment 3",
+        "postId": "5f5f3a3b7f3b9b0017f3b9b0"
+    }
+]
