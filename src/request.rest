@@ -4,7 +4,7 @@ GET http://localhost:3000/posts
 
 ###
 //GET POSTS BY OWNER
-GET http://localhost:3000/posts?owner=Mevorah
+GET http://localhost:3000/posts?owner=Mevorah3
 
 ###
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 ###
 //DELETE POST
-DELETE http://localhost:3000/posts/6756e6990361965d32134fda
+DELETE http://localhost:3000/posts/676003808920b63e6de99851
 
 
 ###

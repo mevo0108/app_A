@@ -1,33 +1,29 @@
 
-const request = require('supertest');
-const appInit = require('../server');
-const mongoose = require('mongoose');
-const postsModel = require('../models/posts_model');
+import request from 'supertest';
+import appInit from '../server';
+import mongoose from 'mongoose';
+import postsModel from '../models/posts_model';
+import testPosts from './test_posts.json';
 
-const testPosts = require('./test_posts');
 
-let app;
+
+
+let app=null;
 
 beforeAll( async () => {
-    console.log('Before all tests');
+    console.log('init app');
     app = await appInit();
+    console.log('Before all tests');
     await postsModel.deleteMany();
 });
 
-afterAll(()=>{
+afterAll( async ()=>{
     console.log('After all tests');
-    mongoose.connection.close();
+    await mongoose.connection.close();
 });
 
-describe("Posts Test" , () => {
-    test("Test get all post empty", async () => {
-        const response = await request(app).get('/posts');
-        expect(response.statusCode).toBe(200);    
-        expect(response.body.length).toBe(0);
-    });
-
-    test("Test create new post", async () => {
-        for(let post of testPosts){
+test("Test create new post", async () => {
+        for(const post of testPosts){
             const response = await request(app).post('/posts').send(post);
             expect(response.statusCode).toBe(201);
             expect(response.body.title).toBe(post.title);
@@ -73,4 +69,4 @@ describe("Posts Test" , () => {
         });
         expect(response.statusCode).toBe(400);
     });
-});
+

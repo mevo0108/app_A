@@ -1,6 +1,7 @@
-const postModel = require("../models/posts_model");
+import postModel from "../models/posts_model";
+import { Request, Response } from "express";
 
-const getAllPosts = async (req, res)=>{
+const getAllPosts = async (req:Request, res:Response)=>{
     const ownerFilter = req.query.owner;
     try {
         if (ownerFilter) {
@@ -15,9 +16,7 @@ const getAllPosts = async (req, res)=>{
     }
 };
 
-
-
-const getPostById = async (req, res)=>{
+const getPostById = async (req:Request, res:Response)=>{
     const postId = req.params.id;
     try {
         const post = await postModel.findById(postId);
@@ -31,7 +30,7 @@ const getPostById = async (req, res)=>{
     }
 };
 
-const createPost = async (req, res) => {
+const createPost = async (req:Request, res:Response) => {
     const post =req.body;
     try{
         const newPost = await postModel.create(post);
@@ -41,7 +40,7 @@ const createPost = async (req, res) => {
     }
 };
 
-const deletePost = async (req, res)=>{
+const deletePost = async (req:Request, res:Response)=>{
     const postId = req.params.id;
     try{
         const post = await postModel.findByIdAndDelete(postId);
@@ -51,7 +50,7 @@ const deletePost = async (req, res)=>{
     }
 };
 
-module.exports = {
+export default {
     getAllPosts,
     getPostById,
     createPost,
