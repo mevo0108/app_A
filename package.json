@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "tsc && jest --detectOpenHandles --forceExit",
-    "start": "tsc && node dist/app.js",
+    "testAuth": "tsc && jest --detectOpenHandles --forceExit auth.test.ts",
+    "start": "tsc && node dist/src/app.js",
     "lint": "eslint . --ext .ts",
     "dev": "nodemon ./src/app.ts"
   },
@@ -15,6 +16,7 @@
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.2"
   },
   "devDependencies": {
