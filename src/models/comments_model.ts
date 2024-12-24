@@ -1,6 +1,14 @@
 
 import mongoose from "mongoose";
-const Schema = mongoose.Schema;
+
+export interface iComment  {
+    _id: string,
+    comment: string,
+    owner: string,
+    postId: string,
+}
+
+const Schema = mongoose.Schema<iComment>;
 const commentSchema = new Schema({
     _id:{
         type: String,

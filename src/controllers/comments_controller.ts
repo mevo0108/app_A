@@ -1,6 +1,6 @@
-import commentsModel from "../models/comments_model";
-import BaseController from "./base_controller";
+import commentsModel,{iComment} from "../models/comments_model";
+import createController from "./base_controller";
 
-const commentsController = new BaseController(commentsModel);
+const commentsController = createController<iComment>(commentsModel);
 
 export default commentsController;

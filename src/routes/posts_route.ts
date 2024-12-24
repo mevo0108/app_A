@@ -3,16 +3,12 @@ import postController from "../controllers/posts_controller";
 
 const router = express.Router();
 
-router.get("/", (req:Request, res:Response) => {
-    postController.getAll(req, res);	
-});
+router.get("/", postController.getAll.bind(postController));
 router.get("/:id", (req:Request, res:Response) => {
     postController.getItemById(req, res);	
 });
 
-router.post("/", (req: Request, res:Response) => {
-    postController.createItem(req, res);
-});
+router.post("/", postController.createItem.bind(postController));
 
 router.delete("/:id",(req:Request, res:Response) => {
     postController.deleteItem(req, res);

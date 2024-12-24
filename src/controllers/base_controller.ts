@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { AnyObject } from "mongoose";
+import {Model } from "mongoose";
 
-class BaseController{
-    model: AnyObject; //need to import model type from mongoose - do later
-    constructor(model: AnyObject){
+class BaseController<T>{
+    model: Model<T>;
+    constructor(model: Model<T>){
         this.model = model;
     }
     async getAll(req:Request, res:Response){
@@ -52,4 +52,8 @@ class BaseController{
         }
     };
 };
-export default BaseController;
+
+const createController = <T>(model: Model<T>) => {
+    return new BaseController(model);
+}
+export default createController;

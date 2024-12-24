@@ -1,22 +1,18 @@
 import express,{Request,Response} from "express";
-import commentController from "../controllers/comments_controller";
+import commentsController from "../controllers/comments_controller";
 
 const router = express.Router();
 
-router.get("/", (req:Request, res:Response) => {
-    commentController.getAll(req, res);	
-});
+router.get("/",commentsController.getAll.bind(commentsController));
 
 router.get("/:id", (req:Request, res:Response) => {
-    commentController.getItemById(req, res);	
+    commentsController.getItemById(req, res);	
 });
 
-router.post("/", (req: Request, res:Response) => {
-    commentController.createItem(req, res);
-});
+router.post("/",commentsController.createItem.bind(commentsController));
 
 router.delete("/:id", (req:Request, res:Response) => {
-    commentController.deleteItem(req, res);
+    commentsController.deleteItem(req, res);
 });
 
 
