@@ -54,23 +54,23 @@ describe("Auth Tests", () => {
     });
 
     test("Get protected API", async () => {
+
         const response = await request(app).post("/posts").send({
             owner: userInfo._id,
             title: "My First Post",
-            content: "This is my first post"
+            content: "This is my first post",
         });
         expect(response.statusCode).not.toBe(201);
+
         const response2 = await request(app).post("/posts").set({
-            authorization: `jwt` + userInfo.token
+            authorization: 'jwt ' + userInfo.token
         }).send({
             owner: userInfo._id,
             title: "My First Post",
-            content: "This is my first post"
+            content: "This is my First post",
         });
         expect(response2.statusCode).toBe(201);
     });
-
-    
 
 
 

@@ -1,5 +1,5 @@
 import express, {Request,Response} from "express";
-import authController from "../controllers/auth_Controller";
+import authController from "../controllers/auth_controller";
 const router = express.Router();
 
 router.post("/register", (req:Request, res:Response) => {
@@ -7,7 +7,7 @@ router.post("/register", (req:Request, res:Response) => {
 });
 
 router.post("/login", (req:Request, res:Response) => {
-    authController.register(req, res);
+    authController.login(req, res);
 });
 
 

@@ -34,6 +34,7 @@ class BaseController<T>{
             res.status(400).send(error.message);
         }
     };
+    
     async createItem(req:Request, res:Response){
         try{
             const data = await this.model.create(req.body);
@@ -42,6 +43,7 @@ class BaseController<T>{
             res.status(400).send(error);
         }
     };
+
     async deleteItem(req:Request, res:Response){
         const id = req.params.id;
         try{
